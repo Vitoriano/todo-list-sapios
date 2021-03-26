@@ -2,7 +2,7 @@
 <div class="centered-content" ng-controller="ListController">
   <div class="task-manager-container">
 
-    <div class="sidebar has-background-white">
+    <div class="sidebar has-background-white" ng-init="loadInit()">
       <h1 class="title has-text-primary">
         Lista
       </h1>
@@ -52,13 +52,16 @@
 
             <button class="button">
               <div class="icon">
-                <i class="fa fa-edit"></i>
+                <a href="task/edit/{{task.id}}">
+                  <i class="fas fa-edit"></i>
+                </a>
+                
               </div>
             </button>
 
-            <button class="button is-danger"  style="margin-left: 10px;">
+            <button class="button is-danger" ng-click="handleDeleteTask(task.id)"  style="margin-left: 10px;">
               <div class="icon">
-                <i class="fa fa-trash"></i>
+                <i class="fas fa-trash"></i>
               </div>
             </button>
 
@@ -68,9 +71,12 @@
         <h3 class="empty-state-text" ng-if="tasks.length === 0">There are no tasks here! Click the add button to create
           a new task.</h3>
           
-        <button ng-if="tasks.length != 0"  class="circle-add-button button is-primary">
-          <img src="assets/plus-icon.svg" class="has-text-white">
-        </button>
+        <a href="task/new/{{list_id}}"> 
+            <button ng-if="list_id != 0" class="circle-add-button button is-primary">
+              <img src="assets/plus-icon.svg" class="has-text-white">
+          </button>
+        </a>
+       
       </div>
 
       <div ng-if="!tasks">

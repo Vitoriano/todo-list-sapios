@@ -1,10 +1,11 @@
+
 <div ng-controller="ListController">
     <div class=" centered-content task-manager-container">
         <div class="modal-box">
             <h1 class="title">
-                Crie uma nova lista
+                Crie uma nova lista 
             </h1>
-            <form name="form" ng-submit="createList()" novalidate >
+            <form name="form" ng-submit="handleAdd()" novalidate >
                 <input class="input has-background-light is-medium" type="text" name="name" ng-model="name"
                     placeholder="Digite o nome da lista" required>
                 <br><br>

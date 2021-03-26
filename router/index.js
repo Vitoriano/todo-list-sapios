@@ -10,9 +10,12 @@ app.config(function($routeProvider, $locationProvider) {
       //   return delay.promise;
       // }
     }
-  }).when('/task', {
-    templateUrl: 'view/task.html',
-    controller: 'BookController'
+  }).when('/task/new/:id', {
+    templateUrl: 'view/task/new.html',
+    controller: 'TaskController'
+  }).when('/task/edit/:id', {
+    templateUrl: 'view/task/edit.html',
+    controller: 'TaskController'
   }).when('/list/new/', {
     templateUrl: 'view/list/new.html',
     controller: 'ListController'

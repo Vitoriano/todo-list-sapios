@@ -1,11 +1,11 @@
 <div ng-controller="TaskController">
-  <div class=" centered-content task-manager-container">
+  <div class=" centered-content task-manager-container" ng-init="loadInit()">
       <div class="modal-box">
           <h1 class="title">
-              Crie uma nova tarefa
+              Edita Tarefa
           </h1>
           <br>
-          <form name="form" ng-submit="handleAdd()" novalidate >
+          <form name="form" ng-submit="handleEdit()" novalidate >
 
             <div class="field">
               <input class="input has-background-light   is-medium" 
@@ -42,7 +42,7 @@
 
               <div class="buttons is-right">
                   <a href="volta"> <button class="button is-medium" routerLink="/">Cancelar</button></a>
-                  <button class="button is-primary has-text-white is-medium" ng-disabled="form.$invalid">Criar</button>
+                  <button class="button is-primary has-text-white is-medium" ng-disabled="form.$invalid">Editar</button>
               </div>
           </form>
       </div>
