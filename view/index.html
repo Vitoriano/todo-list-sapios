@@ -3,7 +3,7 @@
   <div class="task-manager-container">
 
     <div class="sidebar has-background-white" ng-init="loadInit()">
-      <h1 class="title has-text-primary">
+      <h1 class="title has-text-link">
         Lista
       </h1>
       <div class="list-menu">
@@ -25,7 +25,7 @@
     <div class="task-list-container has-background-light">
       <div ng-if="tasks">
         <div class="top-bar">
-          <h1 class="title has-text-primary">
+          <h1 class="title has-text-link">
             Tarefas
           </h1>
           <div class="dropdown is-hoverable is-right">
@@ -77,16 +77,15 @@
         <h3 class="empty-state-text" ng-if="tasks.length === 0 && list_id != 0">Não há tarefas! Click no botão + para adicionar uma nova tarefa.</h3>
           
         <a href="task/new/{{list_id}}"> 
-            <button ng-if="list_id != 0" class="circle-add-button button is-primary">
+            <button ng-if="list_id != 0" class="circle-add-button button is-info">
               <img src="assets/plus-icon.svg" class="has-text-white">
           </button>
         </a>
        
       </div>
 
-      <div ng-if="!tasks">
-        <h3 class="empty-state-text">Please select a list from the sidebar</h3>
-        task: {{tasks}}
+      <div ng-if="list_id == 0">
+        <h3 class="empty-state-text">Por Favor, Selecione uma lista na sidebar</h3>
       </div>
 
     </div>
