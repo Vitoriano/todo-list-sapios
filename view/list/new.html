@@ -1,0 +1,19 @@
+<div ng-controller="ListController">
+    <div class=" centered-content task-manager-container">
+        <div class="modal-box">
+            <h1 class="title">
+                Crie uma nova lista
+            </h1>
+            <form name="form" ng-submit="createList()" novalidate >
+                <input class="input has-background-light is-medium" type="text" name="name" ng-model="name"
+                    placeholder="Digite o nome da lista" required>
+                <br><br>
+                <div class="buttons is-right">
+                    <a href="volta"> <button class="button is-medium" routerLink="/">Cancelar</button></a>
+                    <button class="button is-primary has-text-white is-medium" ng-disabled="form.$invalid">Criar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

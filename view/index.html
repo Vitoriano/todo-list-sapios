@@ -1,0 +1,84 @@
+
+<div class="centered-content" ng-controller="ListController">
+  <div class="task-manager-container">
+
+    <div class="sidebar has-background-white">
+      <h1 class="title has-text-primary">
+        Lista
+      </h1>
+      <div class="list-menu">
+        <a class="list-menu-item" ng-repeat="list in lists">
+          <p ng-click="handleTask(list.id)">{{ list.name }}</p>
+        </a>
+      </div>
+      <a href="list/new">
+        <button class="button is-primary has-text-white" href="list/new">+ Nova Lista</button>
+      </a>
+    </div>
+    
+    <div class="task-list-container has-background-light">
+      <div ng-if="tasks">
+        <div class="top-bar">
+          <h1 class="title has-text-primary">
+            Tarefas
+          </h1>
+          <div class="dropdown is-hoverable is-right">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                <span class="icon is-small">
+                  <i class="fas fa-cog" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+              <div class="dropdown-content">
+                <a [routerLink]="['/edit-list', selectedListId]" class="dropdown-item">
+                  Edit
+                </a>
+                <a (click)="onDeleteListClick()" class="dropdown-item has-text-danger">
+                  Delete
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Task Elements -->
+        <div class="task" ng-repeat="task in tasks" >
+          <div class="task-text">
+            <p>{{ task.describe }}</p>
+          </div>
+          <div class="task-buttons">
+
+            <button class="button">
+              <div class="icon">
+                <i class="fa fa-edit"></i>
+              </div>
+            </button>
+
+            <button class="button is-danger"  style="margin-left: 10px;">
+              <div class="icon">
+                <i class="fa fa-trash"></i>
+              </div>
+            </button>
+
+          </div>
+        </div>
+
+        <h3 class="empty-state-text" ng-if="tasks.length === 0">There are no tasks here! Click the add button to create
+          a new task.</h3>
+          
+        <button ng-if="tasks.length != 0"  class="circle-add-button button is-primary">
+          <img src="assets/plus-icon.svg" class="has-text-white">
+        </button>
+      </div>
+
+      <div ng-if="!tasks">
+        <h3 class="empty-state-text">Please select a list from the sidebar</h3>
+        task: {{tasks}}
+      </div>
+
+    </div>
+
+  </div>
+</div>
