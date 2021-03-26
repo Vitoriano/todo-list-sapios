@@ -74,8 +74,7 @@
           </div>
         </div>
 
-        <h3 class="empty-state-text" ng-if="tasks.length === 0">There are no tasks here! Click the add button to create
-          a new task.</h3>
+        <h3 class="empty-state-text" ng-if="tasks.length === 0 && list_id != 0">Não há tarefas! Click no botão + para adicionar uma nova tarefa.</h3>
           
         <a href="task/new/{{list_id}}"> 
             <button ng-if="list_id != 0" class="circle-add-button button is-primary">
