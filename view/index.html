@@ -10,10 +10,16 @@
         <a class="list-menu-item" ng-repeat="list in lists">
           <p ng-click="handleTask(list.id)">{{ list.name }}</p>
         </a>
+        
       </div>
       <a href="list/new">
-        <button class="button is-primary has-text-white" href="list/new">+ Nova Lista</button>
+        <button class="button is-link has-text-white" href="list/new">+ Nova Lista</button>
       </a>
+
+      <br>
+      <!-- <a ng-if="list_id" > -->
+        <button ng-if="list_id" ng-click="populateTask()" class="button is-danger has-text-white" >Estou sem tarefas</button>
+      <!-- </a> -->
     </div>
     
     <div class="task-list-container has-background-light">
@@ -44,9 +50,9 @@
         </div>
 
         <!-- Task Elements -->
-        <div class="task" ng-repeat="task in tasks" >
-          <div class="task-text">
-            <p>{{ task.describe }}</p>
+        <div class="task" ng-repeat="task in tasks" ng-class="{'completed': task.is_done}" >
+          <div class="task-text" >
+            <p ng-click="handleStatus(task.id)" >{{ task.describe }}</p>
           </div>
           <div class="task-buttons">
 

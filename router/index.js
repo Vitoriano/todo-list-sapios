@@ -16,10 +16,17 @@ app.config(function($routeProvider, $locationProvider) {
   }).when('/task/edit/:id', {
     templateUrl: 'view/task/edit.html',
     controller: 'TaskController'
+  }).when('/task/change/status/password/:id', {
+    templateUrl: 'view/cardPassword/index.html',
+    controller: 'TaskController'
   }).when('/list/new/', {
     templateUrl: 'view/list/new.html',
     controller: 'ListController'
-  }).otherwise({redirectTo: '/'})
+  }).when('/list/edit/', {
+    templateUrl: 'view/list/edit.html',
+    controller: 'crtlTeste'
+  })
+  .otherwise({redirectTo: '/'})
 
   // isto evita o uso do "#" nas rotas pelo padrão 5 do html. As rotas são clear (mais limpas e estilizadas)
   $locationProvider.html5Mode(true);

@@ -1,7 +1,6 @@
  
 // controler root (padrão)
 app.controller('RootController', function($scope, $http, $route, $routeParams, $location, $rootScope) {
-    
     $scope.$on("activeRoot", function(evt,data){ 
         $location.path('/');
         setTimeout(function(){
@@ -10,7 +9,9 @@ app.controller('RootController', function($scope, $http, $route, $routeParams, $
     });
 });
 
-
+app.controller('crtlTeste', [ function () {
+    //console.log(socket)
+}]);
 
 // controler de lista.
 app.controller('ListController', function($scope, $location, $routeParams, $http, $rootScope) {
@@ -18,12 +19,16 @@ app.controller('ListController', function($scope, $location, $routeParams, $http
     $scope.name = [];
     $scope.lists = [];
     $scope.tasks = [];
+    $scope.msg = []
 
+    // socket.on('msg', msg => {
+    //   console.log(msg)
+    // })
+    
     $scope.list_id = 0;
 
     $scope.loadInit = () => {
         $http.get(API_URL+ 'list/').then(( response ) => {
-            console.log(response);
             $scope.lists = response.data
         }).catch(() => {
             console.log('não foi possivel criar.');
@@ -66,6 +71,40 @@ app.controller('ListController', function($scope, $location, $routeParams, $http
     $scope.$on("activeList", function(evt,data){ 
         $scope.handleTask(data);
     });
+
+    $scope.handleStatus = (id) => {
+        
+        let task = $scope.tasks.filter((value) => value.id == id )
+
+        if(task[0].is_done) {
+
+            $location.path('/task/change/status/password/'+id);
+
+        } else if(task[0].is_done == 0) {
+
+            $http.put(API_URL+ 'task/edit/' + id , {is_done: true}).then(( response ) => {
+                // criando uma evento
+                $rootScope.$broadcast("activeRoot", $scope.model.list_id);
+           }).catch(() => {
+               console.log('não foi possivel criar.');
+           });
+        }
+    }
+
+    $scope.handleUpdateStatus = () => {
+        let task_id = $routeParams.id
+        console.log($scope.password)
+
+        $http.post(API_URL+ 'task/status/change', {id: task_id, password: $scope.password}).then(() => {
+            //$location.path('/');
+        }).catch(() => {
+            console.log('não foi possivel alterar.');
+        });
+    }
+
+    $scope.populateTask = () => {
+        console.log('Entrou')
+    }
 
 });
 

@@ -1,12 +1,14 @@
 
 // modulo principal
-var app = angular.module('app', ['ngRoute'])
+var app = angular.module('app', ['ngRoute' ])
 
 // base url API
 const API_URL = "http://localhost:3000/";
 const MAILBOX_KEY = "b5577c51ebfa29f6292cda54515f8b5d";
 
 const API_URL_MAILBOX = "http://apilayer.net/api/check?"
+
+//const socket = io("http://localhost:3000");
 
 
 // serializador
