@@ -1,5 +1,20 @@
-<div ng-controller="crtlTeste">
-  
-  <h1>Ola Mundo</h1>
+
+<div class="centered-content" ng-controller="ListController">
+  <div class=" centered-content task-manager-container" ng-init="handleList()">
+      <div class="modal-box">
+          <h1 class="title">
+              Edita Lista
+          </h1>
+          <form name="form" ng-submit="handleUpdate()" novalidate >
+              <input class="input has-background-light is-medium" type="text" name="name" ng-model="name"
+                   required>
+              <br><br>
+              <div class="buttons is-right">
+                  <a href="volta"> <button class="button is-medium" routerLink="/">Cancelar</button></a>
+                  <button class="button is-link has-text-white is-medium" ng-disabled="form.$invalid">Salvar</button>
+              </div>
+          </form>
+      </div>
+  </div>
 
 </div>

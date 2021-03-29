@@ -22,9 +22,9 @@ app.config(function($routeProvider, $locationProvider) {
   }).when('/list/new/', {
     templateUrl: 'view/list/new.html',
     controller: 'ListController'
-  }).when('/list/edit/', {
+  }).when('/list/edit/:id', {
     templateUrl: 'view/list/edit.html',
-    controller: 'crtlTeste'
+    controller: 'ListController'
   })
   .otherwise({redirectTo: '/'})
 

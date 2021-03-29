@@ -17,9 +17,9 @@
       </a>
 
       <br>
-      <!-- <a ng-if="list_id" > -->
-        <button ng-if="list_id" ng-click="populateTask()" class="button is-danger has-text-white" >Estou sem tarefas</button>
-      <!-- </a> -->
+    
+      <!-- <button ng-if="list_id" ng-click="populateTask()" class="button is-danger has-text-white" >Estou sem tarefas</button> -->
+     
     </div>
     
     <div class="task-list-container has-background-light">
@@ -28,7 +28,7 @@
           <h1 class="title has-text-link">
             Tarefas
           </h1>
-          <div class="dropdown is-hoverable is-right">
+          <div class="dropdown is-hoverable is-right"  ng-if="list_id != 0">
             <div class="dropdown-trigger">
               <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
                 <span class="icon is-small">
@@ -36,12 +36,12 @@
                 </span>
               </button>
             </div>
-            <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-              <div class="dropdown-content">
-                <a [routerLink]="['/edit-list', selectedListId]" class="dropdown-item">
+            <div class="dropdown-menu" id="dropdown-menu4" role="menu" >
+              <div class="dropdown-content" >
+                <a href="list/edit/{{list_id}}" class="dropdown-item">
                   Edit
                 </a>
-                <a (click)="onDeleteListClick()" class="dropdown-item has-text-danger">
+                <a href="javascript:void(0)"  ng-click="handleDelete(list_id)"  class="dropdown-item has-text-danger">
                   Delete
                 </a>
               </div>
@@ -67,7 +67,7 @@
 
             <button class="button is-danger" ng-click="handleDeleteTask(task.id)"  style="margin-left: 10px;">
               <div class="icon">
-                <i class="fas fa-trash"></i>
+                <i class="fas fa-trash" ></i>
               </div>
             </button>
 
